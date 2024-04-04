@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import Counter from "./components/Counter"
+import Index from "./components/Index"
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <> 
