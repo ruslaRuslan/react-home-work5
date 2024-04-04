@@ -1,26 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-const url = "https://restcountries.com/v3.1/name/azerbaijan"
+const url = `https://restcountries.com/v3.1/name/${countryName}`
 
 const Users = () => {
-    const [users, setUsers] = useState([])
+    const [contryData, setCountryData] = useState(null)
+    const [countryName, setCountryName] = useState("")
+    const [error, setError] = useState(null)
 
-    useEffect(() => {
-        axios.get(url)
-            .then(({ data }) => {
-                setUsers(data)
-            })
-    }, [])
+    const fetchData = async () =>{
+        try{
+            const response = await axios.get(url)
+            setCountryData(response.data[0])
+        } catch (error){
+            setError(error.message)
+        }
+    };
 
-    useEffect(() => {
-        console.log(users);
-    }, [users])
 
     return (
         <>
 
-            <p>{users?.name?.official}</p>
-            <p>{users?.name?.common}</p>
 
         </>
     )
