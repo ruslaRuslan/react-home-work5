@@ -16,8 +16,8 @@ const Users = () => {
         }
     };
 
-    useEffect(()=>{
-        if(countryName){
+    useEffect(() => {
+        if (countryName) {
             fetchData()
         }
     }, [contryData]);
