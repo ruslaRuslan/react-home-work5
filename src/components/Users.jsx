@@ -7,15 +7,20 @@ const Users = () => {
     const [countryName, setCountryName] = useState("")
     const [error, setError] = useState(null)
 
-    const fetchData = async () =>{
-        try{
+    const fetchData = async () => {
+        try {
             const response = await axios.get(url)
             setCountryData(response.data[0])
-        } catch (error){
+        } catch (error) {
             setError(error.message)
         }
     };
 
+    useEffect(()=>{
+        if(countryName){
+            fetchData()
+        }
+    }, [contryData]);
 
     return (
         <>
